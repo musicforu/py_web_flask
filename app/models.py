@@ -72,6 +72,7 @@ class User(UserMixin,db.Model):
 	email=db.Column(db.String(64),unique=True,index=True)
 	password_hash=db.Column(db.String(128))
 	username=db.Column(db.String(64),unique=True,index=True)
+	avatar=db.Column(db.String(64),default='photos/girl.jpg')
 	role_id=db.Column(db.Integer,db.ForeignKey('roles.id'))
 	confirmed=db.Column(db.Boolean,default=False)
 	name=db.Column(db.String(64))

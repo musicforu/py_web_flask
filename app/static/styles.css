@@ -1,0 +1,60 @@
+.profile-thumbnail {
+    float:left;
+    width: 270px;
+    height: 270px;
+}
+.profile-header {
+    min-height: 260px;
+    margin-left: 320px;
+}
+.profile-posts{
+	margin-top: 20px;
+}
+.comments{
+	list-style: none;
+}
+.comment{
+	overflow: hidden;
+	margin-left: -40px;
+	margin-top: 10px;
+}
+.comment-thumbnail{
+	float: left;
+	width:60px;
+	height:60px;
+}
+.comment-date{
+	float: right;
+}
+.comment-content{
+	margin-left: 80px;
+}
+.posts{
+	list-style: none;
+}
+.post-thumbnail{
+	float: left;
+	width: 100px;
+	height: 100px;
+}
+.post{
+	margin-left: -40px;
+	margin-top: 10px;
+	overflow: hidden;
+}
+.post-date{
+	float: right;
+}
+.post-author{
+	margin-left: 120px;
+}
+.post-body{
+	margin-left: 120px;
+}
+.post-footer{
+	margin-top: 25px;
+	float: right;
+}
+#comments{
+	margin-top: 35px;
+}

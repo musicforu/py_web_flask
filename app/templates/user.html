@@ -4,6 +4,9 @@
 
 {% block page_content %}
 <div class="page-header">
+	<img class="profile-thumbnail img-rounded" 
+	src="{{url_for('static',filename=user.avatar)}}">
+  <div class="profile-header">
 	<h1>{{ user.username }}</h1>
 	{% if user.name or user.location %}
 	<p>
@@ -57,8 +60,9 @@
 		</a>
 		{% endif %}
 	</p>
+  </div>
 </div>
-<h3>Posts by {{ user.username }}</h3>
+<h3 class="profile-posts">Posts by {{ user.username }}</h3>
 {% include '_posts.html' %}
 <div class="pagination">
 	{{ macros.pagination_widget(pagination,'.index') }}

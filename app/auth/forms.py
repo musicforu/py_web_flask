@@ -3,6 +3,7 @@ from wtforms import StringField,PasswordField,BooleanField,SubmitField
 from wtforms.validators import Required,Length,Email,Regexp,EqualTo
 from wtforms import ValidationError
 from ..models import User
+from flask_wtf.file import FileField,FileAllowed,FileRequired
 
 class LoginForm(Form):
 	email=StringField('Email',validators=[Required(),Length(1,64),Email()])
@@ -19,6 +20,7 @@ class RegistrationForm(Form):
 	password=PasswordField('Password',validators=[
 		Required(),EqualTo('password2',message='Password must match.')])
 	password2=PasswordField('Confirm password',validators=[Required()])
+	photo=FileField('Your Head Photo',validators=[FileRequired(),FileAllowed(['jpg', 'png','jpeg'], '请上传图片格式！')])
 	submit=SubmitField('Register')
 
 	def validate_email(self,field):

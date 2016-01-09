@@ -7,7 +7,10 @@ from .forms import LoginForm,RegistrationForm,ChangePasswordForm,\
 from ..email import send_email
 from .. import db
 from threading import Thread
+from werkzeug.utils import secure_filename
+import os
 
+upload_path='app\\static\\photos'
 @auth.route('/login',methods=['GET','POST'])
 def login():
 	form=LoginForm()
@@ -30,11 +33,19 @@ def logout():
 def register():
 	form=RegistrationForm()
 	if form.validate_on_submit():
+		f=request.files['photo']
+		f_name=secure_filename(f.filename)
+		f_type=f_name.split('.')[1]
+		avatar_name=form.username.data+'.'+f_type
+		avatar_path='photos/'+avatar_name
+		avatar_upload_path=os.path.join(upload_path,avatar_name)
 		user=User(email=form.email.data,
 					username=form.username.data,
-					password=form.password.data)
+					password=form.password.data,
+					avatar=avatar_path)
 		db.session.add(user)
-		db.session.commit()
+		db.session.commit()		
+		f.save(avatar_upload_path)
 		token=user.generate_confirmation_token()
 		send_email([user.email],'Confirm your account',
 			'confirm',user=user,token=token)		

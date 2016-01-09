@@ -6,7 +6,7 @@ from flask import render_template
 mail_host="smtp.qq.com"  #设置服务器
 mail_user=os.environ['MAIL_USERNAME']#用户名
 #test_environ=os.environ.get('MAIL_USERNAME')
-mail_pass=os.environ['MAIL_PASSWORD']#口令"去qq邮箱获取独立密码" 
+mail_pass=os.environ['MAIL_PASSWORD']#口令"去qq邮箱开启SMTP服务获取密码" 
 mail_postfix="qq.com"  #发件箱的后缀
 
 def send_email(to_list,sub,template,**kwargs):  #to_list：收件人；sub：主题；content：邮件内容
